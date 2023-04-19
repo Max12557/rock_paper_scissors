@@ -6,7 +6,10 @@ const cases = [
     [0, 2], // lose
     [2, 0], // win
     [1, 2], // win
-    [2, 1]  // lose
+    [2, 1], // lose
+    [0, 0], // draw
+    [1, 1], // draw
+    [2, 2], // draw
 ]
 
 let clash = [];
@@ -14,41 +17,53 @@ let clash = [];
 const getComputerChoice = () => {
     let randomChoice = Math.floor(Math.random() * choices.length)
     clash.push(randomChoice);
-    return randomChoice;
 }
 getComputerChoice()
 
-console.log(clash) 
 
 const getUserChoice = () => {
     let userInput = prompt('Make your choice among Rock, Scissors or Paper').toLowerCase();
+    let userChoice;
 
     for (let i = 0; i < choices.length; i++) {
         if (userInput == choices[i]) {
-            let userChoice = choices.indexOf(choices[i]);
+            userChoice = choices.indexOf(choices[i]);
             clash.push(userChoice);
-            return userChoice
         } 
     }
 }
-getUserChoice();
+getUserChoice()
 
-
-console.log(clash) 
 
 function playRound() {
+    let result = null;
 
-        switch (clash) {
-            case cases[[0]]: return 'You win!';
-            case cases[[1]]: return 'You lose!';
-            case cases[[2]]: return 'You lose!';
-            case cases[[3]]: return 'You win!';
-            case cases[[4]]: return 'You win!';
-            case cases[[5]]: return 'You lose!';
-        
+        switch (clash.toString()) {
+
+            case cases[0].toString():
+            case cases[3].toString():
+            case cases[4].toString():
+            result = 'You win!';
+            break;
+
+            case cases[1].toString():
+            case cases[2].toString():
+            case cases[5].toString():
+            result = 'You lose!';
+            break;
+
+            case cases[7].toString():
+            case cases[8].toString():
+            case cases[9].toString():
+            result = 'Draw!';
+            break;
+
             default:
-                break;
+                return 'WOW';
         }
+        return result;
 }
 
-playRound()
+console.log(`Computer choice: ${choices[clash[0]]}`)
+console.log(`Your choice: ${choices[clash[1]]}`)
+console.log(playRound())
