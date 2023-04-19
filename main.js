@@ -1,12 +1,12 @@
 
 const choices = ['rock', 'paper', 'scissors'];
 const cases = [
-    [0, 1],
-    [1, 0],
-    [0, 2],
-    [2, 0],
-    [1, 2],
-    [2, 1]
+    [0, 1], // win
+    [1, 0], // lose
+    [0, 2], // lose
+    [2, 0], // win
+    [1, 2], // win
+    [2, 1]  // lose
 ]
 
 let clash = [];
@@ -37,17 +37,18 @@ getUserChoice();
 console.log(clash) 
 
 function playRound() {
-    for (let i = 0; i < cases[0].length; i++) {
+
         switch (clash) {
-            case cases[[i]]:
-                
-                break;
+            case cases[[0]]: return 'You win!';
+            case cases[[1]]: return 'You lose!';
+            case cases[[2]]: return 'You lose!';
+            case cases[[3]]: return 'You win!';
+            case cases[[4]]: return 'You win!';
+            case cases[[5]]: return 'You lose!';
         
             default:
                 break;
         }
-        
-    }
 }
 
 playRound()
