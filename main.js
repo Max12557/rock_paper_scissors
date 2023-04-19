@@ -59,7 +59,7 @@ function playRound() {
             break;
 
             default:
-                return 'WOW';
+                throw new Error('Something wrong!');
         }
         return result;
 }
